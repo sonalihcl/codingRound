@@ -3,11 +3,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
 public class HotelBookingTest {
-	WebDriver driver = new ChromeDriver();
 
 	@FindBy(linkText = "Hotels")
 	private WebElement hotelLink;
@@ -24,7 +24,10 @@ public class HotelBookingTest {
 	@Test
 	public void shouldBeAbleToSearchForHotels() {
 		setDriverPath();
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
 		driver.get("https://www.cleartrip.com/");
+		PageFactory.initElements(driver, this);
 		hotelLink.click();
 		localityTextBox.sendKeys("Indiranagar, Bangalore");
 		new Select(travellerSelection).selectByVisibleText("1 room, 2 adults");
