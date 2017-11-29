@@ -15,6 +15,8 @@ public class FlightBookingTest {
 	public void testThatResultsAppearForAOneWayJourney() {
 		setDriverPath();
 		driver = new ChromeDriver();
+		waitFor(2000);
+		driver.get("https://www.cleartrip.com/");
 		driver.manage().window().maximize();
 		waitFor(2000);
 		driver.findElement(By.id("OneWay")).click();
@@ -24,6 +26,7 @@ public class FlightBookingTest {
 		waitFor(2000);
 		List<WebElement> originOptions = driver.findElement(By.id("ui-id-1")).findElements(By.tagName("li"));
 		originOptions.get(0).click();
+		waitFor(2000);
 		driver.findElement(By.id("ToTag")).clear();
 		driver.findElement(By.id("ToTag")).sendKeys("Delhi");
 		// wait for the auto complete options to appear for the destination
