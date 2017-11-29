@@ -1,4 +1,7 @@
 import com.sun.javafx.PlatformUtil;
+
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -26,9 +29,9 @@ public class SignInTest {
 
 	private void waitFor(int durationInMilliSeconds) {
 		try {
-			Thread.sleep(durationInMilliSeconds);
-		} catch (InterruptedException e) {
-			e.printStackTrace(); // To change body of catch statement use File | Settings | File Templates.
+			driver.manage().timeouts().implicitlyWait(durationInMilliSeconds, TimeUnit.MICROSECONDS);
+		} catch (Exception e) {
+			System.out.println(e.getMessage()+e);
 		}
 	}
 

@@ -1,4 +1,6 @@
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -46,8 +48,8 @@ public class FlightBookingTest {
 
 	private void waitFor(int durationInMilliSeconds) {
 		try {
-			Thread.sleep(durationInMilliSeconds);
-		} catch (InterruptedException e) {
+			driver.manage().timeouts().implicitlyWait(durationInMilliSeconds, TimeUnit.MICROSECONDS);
+		} catch (Exception e) {
 			System.out.println(e.getMessage()+e);
 		}
 	}
